@@ -123,7 +123,7 @@ def get_data_files():
 # Python setup.py definitions
 #
 requirements = [str(requirement.req) for requirement in parse_requirements(
-    'requirements.txt', session=pip.download.PipSession())]
+    'requirements.txt', session=PipSession())]
 
 # Python Version check
 if not sys.version_info[0] == 2:
