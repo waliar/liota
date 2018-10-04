@@ -247,7 +247,6 @@ class LiotaConfigPath:
                     # now use json file for logging settings
                     try:
                         log_path = config.get('LOG_PATH', 'log_path')
-                        log_cfg = config.get('LOG_CFG', 'json_path')
                         mkdir(log_path)
                     except ConfigParser.ParsingError as err:
                         log.error('Could not parse log config file')
@@ -255,6 +254,7 @@ class LiotaConfigPath:
                     raise IOError('Cannot open configuration file ' + fullPath)
             except IOError as err:
                 log.error('Could not open log config file')
+            log_cfg = config.get('LOG_CFG', 'json_path')
             if os.path.exists(log_cfg):
                 with open(log_cfg, 'rt') as f:
                     config = json.load(f)
